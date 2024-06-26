@@ -28,33 +28,52 @@ $message = ($age < 18) ? '未成年です。' : '大人です。';
 echo $message;
 
 // Q6 配列
-$prefectures_kanto = ['東京都', '神奈川県', '千葉県', '埼玉県', '栃木県', '群馬県', '茨城県'];
-echo $prefectures_kanto[2] . 'と' . $prefectures_kanto[3] . 'は関東地方の都道府県です。';
+$kanto_prefecture = [
+  '東京都',
+  '神奈川県',
+  '千葉県',
+  '埼玉県',
+  '栃木県',
+  '群馬県',
+  '茨城県'
+];
+echo $kanto_prefecture[2] . 'と' . $kanto_prefecture[3] . 'は関東地方の都道府県です。';
 
 // Q7 連想配列-1
-$pcl =['東京都' => '新宿区', '神奈川県' => '横浜市', '千葉県' => '千葉市', '埼玉県' => 'さいたま市', '栃木県' => '宇都宮市', '群馬県' => '前橋市', '茨城県' => '水戸市'];
-foreach ($pcl as $y) {
-  echo $y;
+$prefecture_prefecturalCapitalLocation = [
+  '東京都' => '新宿区',
+  '神奈川県' => '横浜市',
+  '千葉県' => '千葉市',
+  '埼玉県' => 'さいたま市',
+  '栃木県' => '宇都宮市',
+  '群馬県' => '前橋市',
+  '茨城県' => '水戸市'
+];
+foreach ($prefecture_prefecturalCapitalLocation as $prefecturalCapitalLocation) {
+  echo $prefecturalCapitalLocation;
   echo PHP_EOL;
 }
 
 // Q8 連想配列-2
-foreach ($pcl as $x => $y) {
-  if (!($x == '埼玉県')) {
+foreach ($prefecture_prefecturalCapitalLocation as $prefecture => $prefecturalCapitalLocation) {
+  if (!($prefecture == '埼玉県')) {
     continue;
   }
-  echo $x . 'の県庁所在地は、' . $y . 'です。';
+  echo $prefecture . 'の県庁所在地は、' . $prefecturalCapitalLocation . 'です。';
+  break;
 }
 
 // Q9 連想配列-3
-$pcl['愛知県'] = '名古屋市';
-$pcl['大阪府'] = '大阪市';
-foreach ($pcl as $x => $y) {
-  if (in_array($x , $prefectures_kanto,)) {
-    echo $x . 'の県庁所在地は、'. $y . 'です。';
+$prefecture_prefecturalCapitalLocation['愛知県'] =
+  '名古屋市';
+$prefecture_prefecturalCapitalLocation['大阪府'] =
+  '大阪市';
+foreach ($prefecture_prefecturalCapitalLocation as $prefecture => $prefecturalCapitalLocation) {
+  if (in_array($prefecture , $kanto_prefecture,)) {
+    echo $prefecture . 'の県庁所在地は、'. $prefecturalCapitalLocation . 'です。';
     echo PHP_EOL;
   } else {
-    echo $x . 'は関東地方ではありません。';
+    echo $prefecture . 'は関東地方ではありません。';
     echo PHP_EOL;
   }
 }
@@ -91,19 +110,15 @@ function evaluateGrade($Grades) {
     case 'A';
     case 'B';
       return '合格です。' . "\n";
-      break;
     
     case 'C';
       return '合格ですが追加課題があります。' . "\n";
-      break;
 
     case 'D';
       return '不合格です。' . "\n";
-      break;
     
     default;
       return '判定不明です。講師に問い合わせてください。' . "\n";
-      break;
   }
 }
 echo evaluateGrade('A');

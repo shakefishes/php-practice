@@ -4,17 +4,14 @@ echo '1から100までのカウントを開始します' . "\n\n";
 
 $numbers = [];
 for ($i = 1; $i <=100; $i++) {
-    $numbers[] = $i;
-}
-foreach ($numbers as $y) {
-  if($y % 4 === 0 && !($y % 5 === 0)) {
+  if($i % 4 === 0 && !($i % 5 === 0)) {
     echo 'tic' . "\n";
-} elseif ($y % 5 === 0 && !($y % 4 === 0)) {
+} elseif ($i % 5 === 0 && !($i % 4 === 0)) {
     echo 'tac' . "\n";
-} elseif ($y % 4 === 0 && $y % 5 === 0) {
+} elseif ($i % 4 === 0 && $i % 5 === 0) {
     echo 'tic-tac' . "\n";
 } else {
-    echo $y . "\n";
+    echo $i . "\n";
 }}
 
 // Q2 多次元連想配列
@@ -42,14 +39,19 @@ var_dump($personalInfos);
 echo $personalInfos[1]['name'] . 'の電話番号は' . $personalInfos[1]['tel'] . 'です。';
 
 //問題2
-foreach ($personalInfos as $x => $item) {
-  echo $x+1 . '番目の' . $personalInfos[$x]['name'] . 'のメールアドレスは' . $personalInfos[$x]['mail'] . 'で、電話番号は' . $personalInfos[$x]['tel'] . 'です。' . "\n";
+foreach ($personalInfos as $index => $person) {
+  echo $index+1 . '番目の' . $personalInfos[$index]['name'] . 'のメールアドレスは' . $personalInfos[$index]['mail'] . 'で、電話番号は' . $personalInfos[$index]['tel'] . 'です。' . "\n";
 }
 
 //問題3
-$ageList = [25, 30, 18];
-foreach ($personalInfos as $x => $item) {
-    $personalInfos[$x]['age'] = $ageList[$x];
+$ageList = [
+    25,
+    30,
+    18
+];
+foreach ($personalInfos as $index => $person) {
+    $personalInfos[$index]['age'] =
+        $ageList[$index];
 }
 
 var_dump($personalInfos);
@@ -86,7 +88,6 @@ echo $date->modify('-1 months')->format('Y-m-d');
 
 //問題2
 $beforeDate = new DateTime('1992-04-25');
-$diff = $date->diff($beforeDate);
-echo $diff->format('あの日から%a日経過しました。');
+echo $date->diff($beforeDate)->format('あの日から%a日経過しました。');
 
 ?>
