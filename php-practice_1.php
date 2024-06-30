@@ -16,7 +16,7 @@ echo date('現在時刻は、Y年m月d日 G時i分s秒です。');
 
 // Q4 条件分岐-1 if文
 $device = 'a';
-if ($device == 'windows' || $device == 'mac') {
+if ($device === 'windows' || $device === 'mac') {
   echo '使用OSは、' . $device . 'です。';
 } else {
   echo 'どちらでもありません。';
@@ -28,7 +28,7 @@ $message = ($age < 18) ? '未成年です。' : '大人です。';
 echo $message;
 
 // Q6 配列
-$kanto_prefecture = [
+$prefectureOfKantoRegion = [
   '東京都',
   '神奈川県',
   '千葉県',
@@ -37,10 +37,10 @@ $kanto_prefecture = [
   '群馬県',
   '茨城県'
 ];
-echo $kanto_prefecture[2] . 'と' . $kanto_prefecture[3] . 'は関東地方の都道府県です。';
+echo $prefectureOfKantoRegion[2] . 'と' . $prefectureOfKantoRegion[3] . 'は関東地方の都道府県です。';
 
 // Q7 連想配列-1
-$prefecture_prefecturalCapitalLocation = [
+$prefectureAndPrefecturalCapitalLocation = [
   '東京都' => '新宿区',
   '神奈川県' => '横浜市',
   '千葉県' => '千葉市',
@@ -49,13 +49,13 @@ $prefecture_prefecturalCapitalLocation = [
   '群馬県' => '前橋市',
   '茨城県' => '水戸市'
 ];
-foreach ($prefecture_prefecturalCapitalLocation as $prefecturalCapitalLocation) {
+foreach ($prefectureAndPrefecturalCapitalLocation as $prefecturalCapitalLocation) {
   echo $prefecturalCapitalLocation;
   echo PHP_EOL;
 }
 
 // Q8 連想配列-2
-foreach ($prefecture_prefecturalCapitalLocation as $prefecture => $prefecturalCapitalLocation) {
+foreach ($prefectureAndPrefecturalCapitalLocation as $prefecture => $prefecturalCapitalLocation) {
   if (!($prefecture == '埼玉県')) {
     continue;
   }
@@ -64,12 +64,12 @@ foreach ($prefecture_prefecturalCapitalLocation as $prefecture => $prefecturalCa
 }
 
 // Q9 連想配列-3
-$prefecture_prefecturalCapitalLocation['愛知県'] =
+$prefectureAndPrefecturalCapitalLocation['愛知県'] =
   '名古屋市';
-$prefecture_prefecturalCapitalLocation['大阪府'] =
+$prefectureAndPrefecturalCapitalLocation['大阪府'] =
   '大阪市';
-foreach ($prefecture_prefecturalCapitalLocation as $prefecture => $prefecturalCapitalLocation) {
-  if (in_array($prefecture , $kanto_prefecture,)) {
+foreach ($prefectureAndPrefecturalCapitalLocation as $prefecture => $prefecturalCapitalLocation) {
+  if (in_array($prefecture , $prefectureOfKantoRegion,)) {
     echo $prefecture . 'の県庁所在地は、'. $prefecturalCapitalLocation . 'です。';
     echo PHP_EOL;
   } else {
@@ -113,7 +113,7 @@ function evaluateGrade($Grades) {
     
     case 'C';
       return '合格ですが追加課題があります。' . "\n";
-
+      
     case 'D';
       return '不合格です。' . "\n";
     
